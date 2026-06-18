@@ -1,7 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 import { z } from "zod";
-import type { UIMessage } from "ai";
 
 export const listThreads = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
@@ -53,13 +52,14 @@ export const renameThread = createServerFn({ method: "POST" })
 export type StoredMessage = {
   id: string;
   role: "user" | "assistant" | "system";
-  parts: UIMessage["parts"];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  parts: any;
 };
 
 export const getThreadMessages = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => z.object({ threadId: z.string().uuid() }).parse(d))
-  .handler(async ({ data, context }): Promise<StoredMessage[]> => {
+  .handler(async ({ data, context }) => {
     const { data: rows, error } = await context.supabase
       .from("chat_messages")
       .select("id,role,parts,created_at")
@@ -67,8 +67,9 @@ export const getThreadMessages = createServerFn({ method: "GET" })
       .order("created_at", { ascending: true });
     if (error) throw new Error(error.message);
     return (rows ?? []).map((r) => ({
-      id: r.id,
-      role: r.role as StoredMessage["role"],
-      parts: r.parts as UIMessage["parts"],
+      id: r.id as string,
+      role: r.role as "user" | "assistant" | "system",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      parts: r.parts as any,
     }));
   });
