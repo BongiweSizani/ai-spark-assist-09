@@ -50,20 +50,25 @@ export const renameThread = createServerFn({ method: "POST" })
     return { ok: true };
   });
 
+export type StoredMessage = {
+  id: string;
+  role: "user" | "assistant" | "system";
+  parts: UIMessage["parts"];
+};
+
 export const getThreadMessages = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => z.object({ threadId: z.string().uuid() }).parse(d))
-  .handler(async ({ data, context }) => {
+  .handler(async ({ data, context }): Promise<StoredMessage[]> => {
     const { data: rows, error } = await context.supabase
       .from("chat_messages")
       .select("id,role,parts,created_at")
       .eq("thread_id", data.threadId)
       .order("created_at", { ascending: true });
     if (error) throw new Error(error.message);
-    const messages: UIMessage[] = (rows ?? []).map((r) => ({
+    return (rows ?? []).map((r) => ({
       id: r.id,
-      role: r.role as UIMessage["role"],
+      role: r.role as StoredMessage["role"],
       parts: r.parts as UIMessage["parts"],
     }));
-    return messages;
   });
