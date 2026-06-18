@@ -27,6 +27,7 @@ const EmailInput = z.object({
 });
 
 export const generateEmail = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => EmailInput.parse(d))
   .handler(async ({ data }) => {
     const system = `You are an expert business communication writer. Produce a complete, ready-to-send email.
@@ -51,6 +52,7 @@ Key points to include: ${data.keyPoints || "(none specified, infer)"}`;
 const NotesInput = z.object({ notes: z.string().min(20) });
 
 export const summarizeMeeting = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => NotesInput.parse(d))
   .handler(async ({ data }) => {
     const system = `You are a meeting-notes analyst. Summarize the provided notes into a clean, scannable brief.
@@ -82,6 +84,7 @@ const PlannerInput = z.object({
 });
 
 export const planTasks = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => PlannerInput.parse(d))
   .handler(async ({ data }) => {
     const system = `You are a productivity coach using the Eisenhower matrix and time-blocking.
@@ -114,6 +117,7 @@ Be realistic about cognitive load. Group similar work.`;
 const ResearchInput = z.object({ topic: z.string().min(3) });
 
 export const researchTopic = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((d: unknown) => ResearchInput.parse(d))
   .handler(async ({ data }) => {
     const system = `You are a senior research analyst. Produce a structured briefing on the given topic.
