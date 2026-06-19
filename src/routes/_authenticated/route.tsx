@@ -33,6 +33,7 @@ const navItems = [
   { title: "Notes Summarizer", url: "/notes", icon: FileText },
   { title: "Task Planner", url: "/planner", icon: ListChecks },
   { title: "Research", url: "/research", icon: Search },
+  { title: "Pitch Deck", url: "/pitch-deck", icon: Presentation },
   { title: "AI Chat", url: "/chat", icon: MessageSquare },
 ] as const;
 
