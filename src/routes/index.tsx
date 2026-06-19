@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, FileText, ListChecks, Search, Sparkles } from "lucide-react";
+import heroImage from "@/assets/hero.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,6 +59,13 @@ function Landing() {
               <Link to="/dashboard">Open dashboard</Link>
             </Button>
           </div>
+          <img
+            src={heroImage}
+            alt="Atlas AI workspace visual"
+            width={1536}
+            height={896}
+            className="mx-auto mt-12 w-full max-w-5xl rounded-2xl border border-border shadow-2xl"
+          />
         </section>
 
         <section className="mt-24 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
