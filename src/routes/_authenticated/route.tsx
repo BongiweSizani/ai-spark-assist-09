@@ -14,7 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, LogOut } from "lucide-react";
+import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, LogOut, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated")({
@@ -33,6 +33,7 @@ const navItems = [
   { title: "Notes Summarizer", url: "/notes", icon: FileText },
   { title: "Task Planner", url: "/planner", icon: ListChecks },
   { title: "Research", url: "/research", icon: Search },
+  { title: "Pitch Deck", url: "/pitch-deck", icon: Presentation },
   { title: "AI Chat", url: "/chat", icon: MessageSquare },
 ] as const;
 

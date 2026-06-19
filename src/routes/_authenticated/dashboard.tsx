@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, FileText, ListChecks, Search, MessageSquare, ArrowRight } from "lucide-react";
+import { Mail, FileText, ListChecks, Search, MessageSquare, Presentation, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — Atlas" }] }),
@@ -11,6 +11,7 @@ const tools = [
   { to: "/notes", icon: FileText, title: "Meeting Notes Summarizer", desc: "Key points, decisions, action items." },
   { to: "/planner", icon: ListChecks, title: "AI Task Planner", desc: "Prioritize and schedule your workload." },
   { to: "/research", icon: Search, title: "AI Research Assistant", desc: "Structured briefings on any topic." },
+  { to: "/pitch-deck", icon: Presentation, title: "Pitch Deck Generator", desc: "Turn an idea into a .pptx deck." },
   { to: "/chat", icon: MessageSquare, title: "AI Chat", desc: "Threaded workplace copilot." },
 ] as const;
 
