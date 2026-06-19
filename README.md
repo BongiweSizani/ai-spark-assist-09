@@ -31,6 +31,6 @@ Atlas is an AI copilot built for Office Admin role. It automates 3 key workflows
 
 ### 7. Features + Impact
 **Impact**: Reduces admin time by ~2hrs/day on emails/notes. 
-**Demo**: [Lovable URL] ai-spark-assist-09.lovable.app | [GitHub URL] github.com/bongiwe-sizani/AI-Powered-workplace-Productivity-Assistant
+**Demo**:ai-spark-assist-09.lovable.app github.com/bongiwe-sizani/AI-Powered-workplace-Productivity-Assistant
 
 Date: 2026/06/18 | Role: Operations | Built for CAPACITI Office Admin Course
