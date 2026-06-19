@@ -14,7 +14,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, LogOut } from "lucide-react";
+import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, LogOut, Presentation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated")({
