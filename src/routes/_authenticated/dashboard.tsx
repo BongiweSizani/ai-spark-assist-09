@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, FileText, ListChecks, Search, MessageSquare, ArrowRight } from "lucide-react";
+import { Mail, FileText, ListChecks, Search, MessageSquare, Presentation, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — Atlas" }] }),
